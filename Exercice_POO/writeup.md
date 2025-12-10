@@ -78,3 +78,34 @@ On va déplacer la logique. Au lieu de faire des ```System.out.println``` dans l
 - Fais se présenter l'Audi.
 
 - Fais accélérer la Porsche 3 fois de suite (en appelant 3 fois la méthode).
+
+--- 
+
+## Exercice 10 : La mise en production 🏭
+On va refactoriser (nettoyer/améliorer) ton code.
+
+**Partie 1 :** ```Voiture.java``` Modifie ta classe pour ajouter un constructeur. Il doit prendre les 4 informations en paramètres et remplir les attributs grâce au mot-clé ```this```.
+
+Squelette pour t'aider :
+
+```java
+public class Voiture {
+    // Tes attributs restent là...
+
+    // LE CONSTRUCTEUR
+    public Voiture(String marque, String couleur, int vitesse, double price) {
+        this.marque = marque; // "L'attribut marque de l'objet prend la valeur du paramètre marque"
+        // ... Fais pareil pour les 3 autres
+    }
+
+    // Tes méthodes presenter() et accelerer() restent là (avec la correction !)...
+}
+```
+
+**Partie 2 :** ```Main.java``` C'est là que ça devient satisfaisant. Tu vas supprimer toutes les lgines d'assignation (```myCar.marque = ...```).
+
+Tu vas tout faire en un ligne :
+
+```java
+Voiture myCar = new Voiture("Audi", "Bleu", 80, 30000);
+```

@@ -1,21 +1,15 @@
 
 public class Main {
+
     public static void main(String[] args) {
-        Voiture myCar = new Voiture();
-        myCar.marque = "Audi";
-        myCar.couleur = "Bleu";
-        myCar.vitesse = 80;
-        myCar.price = 30000;
+        Voiture audi = new Voiture("Audi", "Bleu", 80, 30000);
+        Voiture porsche = new Voiture("Porsche", "Jaune", 300, 100000);
+        Voiture epave = new Voiture("Epave", "Rouillé", 2, -500);
 
-        Voiture myGoodCar = new Voiture();
-        myGoodCar.marque = "Porsche";
-        myGoodCar.couleur = "Rouge";
-        myGoodCar.vitesse = 300;
-        myGoodCar.price = 100000;
+        audi.presentation();
+        porsche.presentation();
 
-        myCar.presenter();
-        myCar.accelerer();
-        myGoodCar.presenter();
-        myGoodCar.accelerer();
+        audi.speedUp();
+        porsche.speedUp();
     }
 }

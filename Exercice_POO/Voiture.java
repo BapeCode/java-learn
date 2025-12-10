@@ -1,15 +1,27 @@
 public class Voiture {
-    String marque;
-    String couleur;
-    int vitesse;
-    double price;
+    private String brand;
+    private String color;
+    private int speed;
+    private int price;
 
-    public void presenter() {
-        System.out.println("Je suis une " + marque + " de couleur " + couleur + " et je coûte " + price + "$");
+    public Voiture(String brand, String color, int speed, int price) {
+        this.brand = brand;
+        this.color = color;
+        this.speed = speed;
+        this.price = price;
+
+        if (this.price < 0) {
+            this.price = 0;
+            System.out.println("Prix négatif impossible");
+        }
     }
 
-    public void accelerer() {
-        vitesse = vitesse + 10;
-        System.out.println("J'accélère ! Vitesse actuelle : " + vitesse + "km/h");
+    public void presentation() {
+        System.out.println("Voiture " + this.brand + ", Couleur " + this.color + ", Vitesse " + this.speed + "km/h");
+    }
+
+    public void speedUp() {
+        this.speed += 10;
+        System.out.println("J'accélère ! Vitesse actuelle : " + this.speed + "km/h");
     }
 }
