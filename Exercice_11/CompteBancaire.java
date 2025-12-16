@@ -1,16 +1,19 @@
 package Exercice_11;
 
-public class CompteBancaire {
-    private String name;
-    private double amount;
-    private double negative_amount;
+public abstract class CompteBancaire {
+    protected String name;
+    protected double amount;
+    private static int totalAccount = 0;
+    private final int accountNumber;
+    private final String accountType;
 
-    public CompteBancaire(String name, double amount) {
+    public CompteBancaire(String name, double amount, String accountType) {
         this.name = name;
         this.amount = amount;
-        this.negative_amount = 0;
+        totalAccount += 1;
+        this.accountNumber = totalAccount;
+        this.accountType = accountType;
     }
-
 
     //  Getters
 
@@ -22,21 +25,22 @@ public class CompteBancaire {
         return this.amount;
     }
 
-    public double getNegativeAmount() {
-        return this.negative_amount;
+
+    public int getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public static int getTotalAccount() {
+        return totalAccount;
     }
 
     //  Setters
-
-    public void setNegativeAmount(double amount) {
-        this.negative_amount = amount;
-    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAmount(double amount) {
+    protected void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -48,16 +52,16 @@ public class CompteBancaire {
     }
 
     public void withdraw(double amount) {
-        if (this.amount - amount <= this.negative_amount) {
-            System.out.println("Fond insuffisants !");
+        if (this.amount - amount < 0) {
+            System.out.println("Fonds insuffisants !");
         } else {
             this.amount -= amount;
-            System.out.println("Retrait réussi, nouveau solde : " + this.amount + "$");
+            System.out.println("Retrait réussi...");
         }
     }
 
     public void transfer(CompteBancaire account, double amount) {
-        if (this.amount - amount <= this.negative_amount) {
+        if (this.amount - amount >= 0) {
             System.out.println("Fond insuffisants !");
         } else {
             this.amount -= amount;
@@ -67,6 +71,8 @@ public class CompteBancaire {
     }
 
     public void showInformation() {
-        System.out.println("Nom de titulaire : " + this.name + "\nSolde du compte : $" + this.amount + "\nDécouvert : $" + this.negative_amount);
+        System.out.println( "Compte n°[" + this.accountNumber + "] \nTitulaire : " + this.name + "\nSolde du compte : $" + this.amount + "\nType de compte : " + this.accountType);
     }
+
+    public abstract void interesetMensual();
 }
